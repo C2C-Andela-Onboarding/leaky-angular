@@ -1,4 +1,4 @@
-# LeakyAngular
+# LeakyAngular Updated
 
 ## Table of Contents
 1. [Introduction](#Introduction)
