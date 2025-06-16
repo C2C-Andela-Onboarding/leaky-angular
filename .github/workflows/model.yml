@@ -22,12 +22,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Load state
-        run: |
-          if [ ! -f state.json ]; then
-            echo "[]" > state.json
-          fi
-
       - name: Run script
         env:
           MODEL_SECRET: ${{ secrets.MODEL_SECRET }}
