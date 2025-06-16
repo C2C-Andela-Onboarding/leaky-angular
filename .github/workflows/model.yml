@@ -1,0 +1,41 @@
+name: Model test run
+
+on:
+  push:
+
+
+permissions:
+  contents: write
+
+jobs:
+  run-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Load state
+        run: |
+          if [ ! -f state.json ]; then
+            echo "[]" > state.json
+          fi
+
+      - name: Run script
+        env:
+          MODEL_SECRET: ${{ secrets.MODEL_SECRET }}
+        run: node model.js
+
+      - name: test
+        run: |
+            echo "Success"
+      
+
+  
